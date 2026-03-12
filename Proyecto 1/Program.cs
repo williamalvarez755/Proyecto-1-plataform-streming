@@ -220,8 +220,60 @@ void pantalladecarga()
     Console.WriteLine();
     for (int i = 3; i >= 1; i--)
     {
-        Console.WriteLine("Iniciando evaluacion en: " + i);
+        Console.WriteLine("CARGANDO EN ...." + i);
+
+        if (i == 1)
+        {
+            Console.WriteLine("CARGA COMPLETA.....");
+        }
     }
 }
+void decisionfinal(string titulo, bool apruebahorario, bool apruebaduracion, bool apruebaproduccion, int nivelproduccion, int duracion, int horaprogramada)
+{
+    Console.WriteLine("Resultados de evaluacion:");
+
+    if (!apruebahorario || !apruebaduracion || !apruebaproduccion)
+    {
+            pantalladecarga();
+        Console.WriteLine("El titulo '" + titulo + "' fue RECHAZADO.");
+        if (!apruebahorario)
+            Console.WriteLine("No cumple la clasificacion de horario.");
+        if (!apruebaduracion)
+            Console.WriteLine(" La duracion no corresponde al rango permitido para su tipo.");
+        if (!apruebaproduccion)
+            Console.WriteLine("El nivel de produccion no es valido para su clasificacion de edad.");
+        contadorrechazados++;
+    }
+    else
+    {
+        int impacto = clasificacionimpacto(nivelproduccion, duracion, horaprogramada);
+
+        if (impacto == 1)
+        {
+            pantalladecarga();
+            Console.WriteLine("El titulo '" + titulo + "' fue ENVIADO A REVISION.");
+            Console.WriteLine("Cumple las reglas tecnicas pero tiene impacto ALTO.");
+            contadorenrevision++;
+            contadorimpactoalto++;
+        }
+        else if (impacto == 2)
+        {
+            pantalladecarga();
+                Console.WriteLine("El titulo '" + titulo + "' fue PUBLICADO CON AJUSTES.");
+            Console.WriteLine("Cumple las reglas tecnicas con impacto MEDIO. Requiere ajustes menores.");
+            contadorpublicados++;
+            contadorimpactomedio++;
+        }
+        else
+        {
+            pantalladecarga();
+            Console.WriteLine("El titulo '" + titulo + "' fue PUBLICADO exitosamente.");
+            Console.WriteLine("Cumple todas las reglas tecnicas con impacto BAJO.");
+            contadorpublicados++;
+            contadorimpactobajo++;
+        }
+    }
+}
+
 
 funcion_principal();
