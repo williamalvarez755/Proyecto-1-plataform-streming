@@ -96,12 +96,12 @@ void pedirdatos()
         Console.Write("Opcion: ");
         entradaEdad = Console.ReadLine();
     }
-    Console.Write("Ingrese hora programada 0-23: ");
+    Console.Write("Ingrese hora programada (0-23): ");
     string entradaHora = Console.ReadLine();
     while (!int.TryParse(entradaHora, out horaprogramada) || horaprogramada < 0 || horaprogramada > 23)
     {
         Console.WriteLine("Hora invalida. Ingrese un numero entre 0 y 23.");
-        Console.Write("Ingrese hora programada 0-23: ");
+        Console.Write("Ingrese hora programada (0-23): ");
         entradaHora = Console.ReadLine();
     }
     Console.WriteLine("Ingrese nivel de produccion");
@@ -113,15 +113,16 @@ void pedirdatos()
         Console.WriteLine("Opcion invalida. Ingrese un numero entre 1 y 3.");
         Console.Write("Opcion: ");
         entradaProduccion = Console.ReadLine();
-        Console.WriteLine("Contenido recibido. Iniciando evaluacion....");
-        bool apruebahorario = reglasclasificacionHorario(edadrecomendada, horaprogramada);
-        bool apruebaduracion = reglasduracionportipo(tipo, duracion);
-        bool apruebaproduccion = reglasproduccion(nivelproduccion, edadrecomendada);
     }
-    Console.WriteLine("\nContenido recibido. Iniciando evaluacion....");
+    Console.WriteLine("Contenido recibido. Iniciando evaluacion....");
 
 
 
+
+    bool apruebahorario = reglasclasificacionHorario(edadrecomendada, horaprogramada);
+    bool apruebaduracion = reglasduracionportipo(tipo, duracion);
+    bool apruebaproduccion = reglasproduccion(nivelproduccion, edadrecomendada);
+    decisionfinal(titulo, apruebahorario, apruebaduracion, apruebaproduccion, nivelproduccion, duracion, horaprogramada);
 }
 
 bool reglasclasificacionHorario(int edadRecomendada, int horaProgramada)
