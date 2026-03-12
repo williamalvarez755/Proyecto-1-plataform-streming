@@ -215,6 +215,13 @@ int clasificacionimpacto(int nivelProduccion, int duracion, int horaProgramada)
 
     return impacto;
 }
-
+void pantalladecarga()
+{
+    Console.WriteLine();
+    for (int i = 3; i >= 1; i--)
+    {
+        Console.WriteLine("Iniciando evaluacion en: " + i);
+    }
+}
 
 funcion_principal();
