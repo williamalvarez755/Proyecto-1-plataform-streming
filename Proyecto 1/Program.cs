@@ -113,11 +113,14 @@ void pedirdatos()
         Console.WriteLine("Opcion invalida. Ingrese un numero entre 1 y 3.");
         Console.Write("Opcion: ");
         entradaProduccion = Console.ReadLine();
+        Console.WriteLine("Contenido recibido. Iniciando evaluacion....");
+        bool apruebahorario = reglasclasificacionHorario(edadrecomendada, horaprogramada);
+        bool apruebaduracion = reglasduracionportipo(tipo, duracion);
+        bool apruebaproduccion = reglasproduccion(nivelproduccion, edadrecomendada);
     }
     Console.WriteLine("\nContenido recibido. Iniciando evaluacion....");
 
-    bool apruebahorario = reglasclasificacionHorario(edadrecomendada, horaprogramada);
-    bool apruebaduracion = reglasduracionportipo(tipo, duracion);
+
 
 }
 
@@ -173,6 +176,45 @@ bool reglasduracionportipo(int tipoContenido, int duracion)
     return apruebaduracion;
 }
 
+bool reglasproduccion(int nivelProduccion, int edadRecomendada)
+{
+    bool apruebaproduccion = false;
+
+    if (nivelProduccion == 3 && edadRecomendada == 3)
+    {
+        Console.WriteLine("Produccion baja no es valida para contenido +18.");
+        apruebaproduccion = false;
+    }
+    else
+    {
+        apruebaproduccion = true;
+    }
+
+    return apruebaproduccion;
+}
+
+int clasificacionimpacto(int nivelProduccion, int duracion, int horaProgramada)
+{
+    int impacto = 3;
+
+    if (nivelProduccion == 3 && duracion < 60)
+    {
+        impacto = 3;
+    }
+
+    if (nivelProduccion == 2 || (duracion >= 60 && duracion <= 120))
+    {
+        if (impacto > 2)
+            impacto = 2;
+    }
+
+    if (nivelProduccion == 1 || duracion > 120 || (horaProgramada >= 20 && horaProgramada <= 23))
+    {
+        impacto = 1;
+    }
+
+    return impacto;
+}
 
 
 funcion_principal();
