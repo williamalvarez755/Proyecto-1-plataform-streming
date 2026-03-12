@@ -275,6 +275,33 @@ void decisionfinal(string titulo, bool apruebahorario, bool apruebaduracion, boo
         }
     }
 }
+void mostrarreglas()
+{
+    Console.WriteLine("Reglas de Clasificacion del Sistema");
+    Console.WriteLine("1.Clasificacion por Horario:");
+    Console.WriteLine("Todo publico permitido en cualquier horario (0-23).");
+    Console.WriteLine("+13 permitido entre 6:00 y 22:00.");
+    Console.WriteLine("+18 permitido entre 22:00 y 5:00.");
+    Console.WriteLine("2.Clasificacion por Duracion:");
+    Console.WriteLine("Pelicula 60 - 180 minutos.");
+    Console.WriteLine("Serie 20 - 90 minutos.");
+    Console.WriteLine("Documental 30 - 120 minutos.");
+    Console.WriteLine("Evento en vivo 30 - 240 minutos.");
+    Console.WriteLine("3.Clasificacion por Produccion:");
+    Console.WriteLine("Alto valido para cualquier clasificacion de edad.");
+    Console.WriteLine("Medio valido para cualquier clasificacion de edad.");
+    Console.WriteLine("Bajo valido solo para Todo publico o +13. NO valido para +18.");
+    Console.WriteLine("4.Clasificacion de Impacto:");
+    Console.WriteLine("Alto produccion alta, duracion > 120 min, o entre 20-23 horas.");
+    Console.WriteLine("Medio produccion media o duracion entre 60-120 minutos.");
+    Console.WriteLine("Bajo produccion baja y duracion menor a 60 minutos.");
+    Console.WriteLine("Si aplica mas de un nivel, se toma el mas alto.");
+    Console.WriteLine("5.Decisiones posibles:");
+    Console.WriteLine("Publicado cumple todas las reglas e impacto es Bajo.");
+    Console.WriteLine("Publicado con ajustes cumple todas las reglas e impacto es Medio.");
+    Console.WriteLine("Enviado a revision cumple las reglas pero impacto es Alto.");
+    Console.WriteLine("Rechazado incumple alguna regla obligatoria.");
+}
 
 
 funcion_principal();
