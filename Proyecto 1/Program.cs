@@ -116,6 +116,63 @@ void pedirdatos()
     }
     Console.WriteLine("\nContenido recibido. Iniciando evaluacion....");
 
+    bool apruebahorario = reglasclasificacionHorario(edadrecomendada, horaprogramada);
+    bool apruebaduracion = reglasduracionportipo(tipo, duracion);
+
 }
+
+bool reglasclasificacionHorario(int edadRecomendada, int horaProgramada)
+{
+    bool apruebahorario = false;
+    if (edadRecomendada == 1 && horaProgramada >= 0 && horaProgramada <= 23)
+    {
+        apruebahorario = true;
+    }
+    else if (edadRecomendada == 2 && horaProgramada >= 6 && horaProgramada <= 22)
+    {
+        apruebahorario = true;
+    }
+    else if (edadRecomendada == 3 && (horaProgramada >= 22 || horaProgramada <= 5))
+    {
+        apruebahorario = true;
+    }
+    else
+    {
+        Console.WriteLine("OJO: El contenido no cumple las normas de clasificacion de horario.");
+        apruebahorario = false;
+    }
+
+    return apruebahorario;
+}
+
+bool reglasduracionportipo(int tipoContenido, int duracion)
+{
+    bool apruebaduracion = false;
+
+    if (tipoContenido == 1 && duracion >= 60 && duracion <= 180)
+    {
+        apruebaduracion = true;
+    }
+    else if (tipoContenido == 2 && duracion >= 20 && duracion <= 90)
+    {
+        apruebaduracion = true;
+    }
+    else if (tipoContenido == 3 && duracion >= 30 && duracion <= 120)
+    {
+        apruebaduracion = true;
+    }
+    else if (tipoContenido == 4 && duracion >= 30 && duracion <= 240)
+    {
+        apruebaduracion = true;
+    }
+    else
+    {
+        Console.WriteLine("OJO: La duracion no esta dentro del rango permitido para su tipo.");
+        apruebaduracion = false;
+    }
+    return apruebaduracion;
+}
+
+
 
 funcion_principal();
