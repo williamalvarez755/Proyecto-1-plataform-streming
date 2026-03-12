@@ -57,3 +57,65 @@ void funcion_principal()
         }
     } while (opcion != 5);
 }
+
+void pedirdatos()
+{
+    int edadrecomendada = 0;
+    int horaprogramada = -1;
+    int tipo = 0;
+    int duracion = 0;
+    int nivelproduccion = 0;
+    Console.WriteLine("Evaluando datos....");
+    Console.Write("Ingrese el nombre del contenido: ");
+    string titulo = Console.ReadLine();
+    Console.WriteLine("Ingrese tipo de contenido");
+    Console.WriteLine("1. Pelicula\n2. Serie\n3. Documental\n4. Transmision en vivo");
+    Console.Write("Opcion: ");
+    string entradaTipo = Console.ReadLine();
+    while (!int.TryParse(entradaTipo, out tipo) || tipo < 1 || tipo > 4)
+    {
+        Console.WriteLine("Tipo invalido. Ingrese un numero entre 1 y 4.");
+        Console.Write("Opcion: ");
+        entradaTipo = Console.ReadLine();
+    }
+    Console.Write("Ingrese la duracion en minutos: ");
+    string entradaDuracion = Console.ReadLine();
+    while (!int.TryParse(entradaDuracion, out duracion) || duracion <= 0)
+    {
+        Console.WriteLine("Duracion invalida. Debe ser un numero mayor a 0.");
+        Console.Write("Ingrese la duracion en minutos: ");
+        entradaDuracion = Console.ReadLine();
+    }
+    Console.WriteLine("Ingrese la edad recomendada");
+    Console.WriteLine("1. Todo publico\n2. +13\n3. +18");
+    Console.Write("Opcion: ");
+    string entradaEdad = Console.ReadLine();
+    while (!int.TryParse(entradaEdad, out edadrecomendada) || edadrecomendada < 1 || edadrecomendada > 3)
+    {
+        Console.WriteLine("Opcion invalida. Ingrese un numero entre 1 y 3.");
+        Console.Write("Opcion: ");
+        entradaEdad = Console.ReadLine();
+    }
+    Console.Write("Ingrese hora programada 0-23: ");
+    string entradaHora = Console.ReadLine();
+    while (!int.TryParse(entradaHora, out horaprogramada) || horaprogramada < 0 || horaprogramada > 23)
+    {
+        Console.WriteLine("Hora invalida. Ingrese un numero entre 0 y 23.");
+        Console.Write("Ingrese hora programada 0-23: ");
+        entradaHora = Console.ReadLine();
+    }
+    Console.WriteLine("Ingrese nivel de produccion");
+    Console.WriteLine("1. Alto\n2. Medio\n3. Bajo");
+    Console.Write("Opcion: ");
+    string entradaProduccion = Console.ReadLine();
+    while (!int.TryParse(entradaProduccion, out nivelproduccion) || nivelproduccion < 1 || nivelproduccion > 3)
+    {
+        Console.WriteLine("Opcion invalida. Ingrese un numero entre 1 y 3.");
+        Console.Write("Opcion: ");
+        entradaProduccion = Console.ReadLine();
+    }
+    Console.WriteLine("\nContenido recibido. Iniciando evaluacion....");
+
+}
+
+funcion_principal();
