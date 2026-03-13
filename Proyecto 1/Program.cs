@@ -65,7 +65,6 @@ void pedirdatos()
     int tipo = 0;
     int duracion = 0;
     int nivelproduccion = 0;
-    Console.WriteLine("Evaluando datos....");
     Console.Write("Ingrese el nombre del contenido: ");
     string titulo = Console.ReadLine();
     Console.WriteLine("Ingrese tipo de contenido");
