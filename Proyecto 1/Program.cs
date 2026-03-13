@@ -302,6 +302,36 @@ void mostrarreglas()
     Console.WriteLine("Enviado a revision cumple las reglas pero impacto es Alto.");
     Console.WriteLine("Rechazado incumple alguna regla obligatoria.");
 }
+void mostrarestadisticas(int contadordeevaluaciones, int publicados, int rechazados, int enrevision)
+{
+    Console.WriteLine("\nEstadisticas de la Sesion");
 
+    if (contadordeevaluaciones > 0)
+    {
+        Console.WriteLine("Total de evaluaciones : " + contadordeevaluaciones);
+        Console.WriteLine("Contenidos publicados : " + publicados);
+        Console.WriteLine("Contenidos rechazados : " + rechazados);
+        Console.WriteLine("Contenidos en revision: " + enrevision);
+        Console.WriteLine();
+
+        string impactopredominante = "Ninguno";
+        if (contadorimpactoalto >= contadorimpactomedio && contadorimpactoalto >= contadorimpactobajo && contadorimpactoalto > 0)
+            impactopredominante = "Alto (" + contadorimpactoalto + " contenidos)";
+        else if (contadorimpactomedio >= contadorimpactoalto && contadorimpactomedio >= contadorimpactobajo && contadorimpactomedio > 0)
+            impactopredominante = "Medio (" + contadorimpactomedio + " contenidos)";
+        else if (contadorimpactobajo > 0)
+            impactopredominante = "Bajo (" + contadorimpactobajo + " contenidos)";
+
+        Console.WriteLine("Impacto predominante " + impactopredominante);
+
+        int porcentaje = (int)((double)publicados / contadordeevaluaciones * 100);
+        Console.WriteLine("Porcentaje de aprobacion " + porcentaje + "%");
+    }
+    else
+    {
+        Console.WriteLine("No se han evaluado contenidos aun.");
+        Console.WriteLine("Ingrese contenidos para poder generar estadisticas.");
+    }
+}
 
 funcion_principal();
