@@ -6,7 +6,7 @@ int contadorenrevision = 0;
 int contadorimpactoalto = 0;
 int contadorimpactomedio = 0;
 int contadorimpactobajo = 0;
-
+Console.Beep();
 void funcion_principal()
 {
     int contadordeevaluaciones = 0;
@@ -55,6 +55,7 @@ void funcion_principal()
                 Console.WriteLine("Saliendo del sistema...");
                 Console.WriteLine("Resumen final de la sesion:");
                 mostrarestadisticas(contadordeevaluaciones, contadorpublicados, contadorrechazados, contadorenrevision);
+                Console.Beep();
                 break;
             default:
                 Console.WriteLine("Opcion no valida. Por favor, seleccione una opcion del 1 al 5.");
@@ -234,7 +235,7 @@ void pantalladecarga()
     {
         Console.WriteLine("CARGANDO EN .... " + i);
         Thread.Sleep(300);
-        Console.Beep(250, 500);
+        Console.Beep(250, 200);
 
         if (i == 1)
         {
