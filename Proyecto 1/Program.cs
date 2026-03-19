@@ -66,6 +66,8 @@ void funcion_principal()
 
 void pedirdatos()
 {
+    Console.Clear();
+    Console.ForegroundColor = ConsoleColor.Green;
     int edadrecomendada = 0;
     int horaprogramada = -1;
     int tipo = 0;
@@ -158,6 +160,7 @@ bool reglasclasificacionHorario(int edadRecomendada, int horaProgramada)
     }
 
     return apruebahorario;
+
 }
 
 bool reglasduracionportipo(int tipoContenido, int duracion)
@@ -247,6 +250,7 @@ void pantalladecarga()
 
 void decisionfinal(string titulo, bool apruebahorario, bool apruebaduracion, bool apruebaproduccion, int nivelproduccion, int duracion, int horaprogramada)
 {
+    Console.Clear();
     Console.WriteLine("Resultados de evaluacion:");
 
     if (!apruebahorario || !apruebaduracion || !apruebaproduccion)
@@ -293,6 +297,7 @@ void decisionfinal(string titulo, bool apruebahorario, bool apruebaduracion, boo
 }
 void mostrarreglas()
 {
+    Console.ForegroundColor = ConsoleColor.Cyan;
     Console.WriteLine("Reglas de Clasificacion del Sistema");
     Console.WriteLine("1.Clasificacion por Horario:");
     Console.WriteLine("Todo publico permitido en cualquier horario (0-23).");
@@ -320,7 +325,8 @@ void mostrarreglas()
 }
 void mostrarestadisticas(int contadordeevaluaciones, int publicados, int rechazados, int enrevision)
 {
-    Console.WriteLine("\nEstadisticas de la Sesion");
+    Console.Clear();
+    Console.WriteLine("Estadisticas de la Sesion");
 
     if (contadordeevaluaciones > 0)
     {
