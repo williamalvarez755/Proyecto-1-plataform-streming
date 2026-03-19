@@ -1,4 +1,6 @@
-﻿int contadorpublicados = 0;
+﻿using System.Drawing;
+
+int contadorpublicados = 0;
 int contadorrechazados = 0;
 int contadorenrevision = 0;
 int contadorimpactoalto = 0;
@@ -70,6 +72,7 @@ void pedirdatos()
     int nivelproduccion = 0;
     Console.Write("Ingrese el nombre del contenido: ");
     string titulo = Console.ReadLine();
+    Console.Beep(1000, 500);
     Console.WriteLine("Ingrese tipo de contenido");
     Console.WriteLine("1. Pelicula\n2. Serie\n3. Documental\n4. Transmision en vivo");
     Console.Write("Opcion: ");
@@ -80,6 +83,7 @@ void pedirdatos()
         Console.Write("Opcion: ");
         entradaTipo = Console.ReadLine();
     }
+    Console.Beep(1000, 500);
     Console.Write("Ingrese la duracion en minutos: ");
     string entradaDuracion = Console.ReadLine();
     while (!int.TryParse(entradaDuracion, out duracion) || duracion <= 0)
@@ -88,6 +92,7 @@ void pedirdatos()
         Console.Write("Ingrese la duracion en minutos: ");
         entradaDuracion = Console.ReadLine();
     }
+    Console.Beep(1000, 500);
     Console.WriteLine("Ingrese la edad recomendada");
     Console.WriteLine("1. Todo publico\n2. +13\n3. +18");
     Console.Write("Opcion: ");
@@ -98,6 +103,7 @@ void pedirdatos()
         Console.Write("Opcion: ");
         entradaEdad = Console.ReadLine();
     }
+    Console.Beep(1000, 500);
     Console.Write("Ingrese hora programada (0-23): ");
     string entradaHora = Console.ReadLine();
     while (!int.TryParse(entradaHora, out horaprogramada) || horaprogramada < 0 || horaprogramada > 23)
@@ -106,6 +112,7 @@ void pedirdatos()
         Console.Write("Ingrese hora programada (0-23): ");
         entradaHora = Console.ReadLine();
     }
+    Console.Beep(1000, 500);
     Console.WriteLine("Ingrese nivel de produccion");
     Console.WriteLine("1. Alto\n2. Medio\n3. Bajo");
     Console.Write("Opcion: ");
@@ -116,6 +123,7 @@ void pedirdatos()
         Console.Write("Opcion: ");
         entradaProduccion = Console.ReadLine();
     }
+    Console.Beep(1000, 500);
     Console.WriteLine("Contenido recibido. Iniciando evaluacion....");
 
 
@@ -225,11 +233,13 @@ void pantalladecarga()
     for (int i = 3; i >= 1; i--)
     {
         Console.WriteLine("CARGANDO EN .... " + i);
-        Thread.Sleep(300); 
+        Thread.Sleep(300);
+        Console.Beep(250, 500);
 
         if (i == 1)
         {
             Console.WriteLine("CARGA COMPLETA.");
+            Console.Beep(1000, 500);
         }
     }
 }
@@ -338,5 +348,5 @@ void mostrarestadisticas(int contadordeevaluaciones, int publicados, int rechaza
         Console.WriteLine("Ingrese contenidos para poder generar estadisticas.");
     }
 }
-
+Console.ForegroundColor = ConsoleColor.Red;
 funcion_principal();
