@@ -31,12 +31,15 @@ void funcion_principal()
                 contadordeevaluaciones++;
                 break;
             case 2:
+                pantalladecarga();
                 mostrarreglas();
                 break;
             case 3:
+                pantalladecarga();
                 mostrarestadisticas(contadordeevaluaciones, contadorpublicados, contadorrechazados, contadorenrevision);
                 break;
             case 4:
+                pantalladecarga();
                 contadorpublicados = 0;
                 contadorrechazados = 0;
                 contadorenrevision = 0;
@@ -215,19 +218,22 @@ int clasificacionimpacto(int nivelProduccion, int duracion, int horaProgramada)
 
     return impacto;
 }
+
 void pantalladecarga()
 {
     Console.WriteLine();
     for (int i = 3; i >= 1; i--)
     {
-        Console.WriteLine("CARGANDO EN ...." + i);
+        Console.WriteLine("CARGANDO EN .... " + i);
+        Thread.Sleep(300); 
 
         if (i == 1)
         {
-            Console.WriteLine("CARGA COMPLETA.....");
+            Console.WriteLine("CARGA COMPLETA.");
         }
     }
 }
+
 void decisionfinal(string titulo, bool apruebahorario, bool apruebaduracion, bool apruebaproduccion, int nivelproduccion, int duracion, int horaprogramada)
 {
     Console.WriteLine("Resultados de evaluacion:");
